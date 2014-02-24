@@ -18,7 +18,7 @@ int main(int argc, char **argv) {
 			}
 
 			if(f[i -1] >= '0' && f[i -1] <= '9') {
-				num = (f[dig - i] - 48) * d;
+				num = (f[dig - i] - '0') * d;
 				sum = sum + num;
 			}
 		}	
