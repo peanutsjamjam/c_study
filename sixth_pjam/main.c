@@ -7,7 +7,6 @@ int main(int argc, char **argv) {
 	char buf[32];
 
 	while (fgets(buf, sizeof(buf), stdin) != NULL) {
-
 		val = 0;
 		for (i=0; buf[i]>='0' && buf[i]<='9'; i++) {
 			val *= 10;
