@@ -1,6 +1,11 @@
 
 
-% ./program foo bar
+sugawara@freebsd83-1[master]% ./program foo bar
+3
+./program
+foo
+bar
+sugawara@freebsd83-1[master]%
 
 
       +-----+
