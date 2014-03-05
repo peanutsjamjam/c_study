@@ -7,6 +7,7 @@ int main(int argc, char **argv) {
 	};
 
 	printf("%c\n", name[1][2]);
+	printf("%c\n", name[1][32]);
 
 	return 0;
 }
