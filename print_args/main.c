@@ -10,5 +10,7 @@ int main(int argc, char **argv) {
 		printf("%s\n", argv[i]);
 	}
 
+	printf("%d\n", sizeof(char *));
+
 	return 0;
 }
