@@ -3,20 +3,18 @@
 #include <err.h>
 #include <unistd.h>
 
-
 extern int errno;
 static int lineno;
 
 void do_line(const char *buf) {
 	int idx;
-	int col = 0;
 
 	for (idx=0; buf[idx]!='\n' && buf[idx]!=0; idx++) {
 		if (lineno==1 && idx==0) {
 			printf("%02x\n", buf[idx]);
 		}
 	}
-	//printf("%d: %s", lineno, buf);
+	printf("%d: %s", lineno, buf);
 }
 
 void do_file(const char *path) {
@@ -24,7 +22,7 @@ void do_file(const char *path) {
 	char buf[2048];
 
 	if ((fp = fopen(path, "r")) == NULL) {
-		errc(1, errno, "%s", path);
+		err(1, "%s", path);
 	}
 	lineno = 0;
 	while (fgets(buf, sizeof(buf), fp) != NULL) {
@@ -33,7 +31,7 @@ void do_file(const char *path) {
 	}
 
 	if (ferror(fp)) {
-		errc(1, errno, "%s", path);
+		err(1, "%s", path);
 	}
 
 	fclose(fp);
@@ -45,9 +43,7 @@ void usage() {
 }
 
 int main(int argc, char **argv) {
-
 	int ch;
-
 	while ((ch = getopt(argc, argv, "bf:")) != -1) {
 		switch (ch) {
 			case 'b':
@@ -62,10 +58,8 @@ int main(int argc, char **argv) {
 	}
 	argc -= optind;
 	argv += optind;
-
 	for (int i=0; i<argc; i++) {
 		do_file(argv[i]);
 	}
-
 	return 0;
 }
